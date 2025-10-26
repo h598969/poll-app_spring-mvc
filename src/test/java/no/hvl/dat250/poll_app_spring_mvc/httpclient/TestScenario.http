@@ -1,0 +1,67 @@
+### 1) Create user 1
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{
+  "username": "Sivert",
+  "email": "sivert@examplemail.com"
+}
+
+### 2) List all users
+GET http://localhost:8080/users
+
+### 3) Create user 2
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{
+  "username": "Jakob",
+  "email": "jakob@examplemail.com"
+}
+
+### 4) List users
+GET http://localhost:8080/users
+
+### 5) User 1 creates a new poll
+POST http://localhost:8080/users/1/polls
+Content-Type: application/json
+
+{
+  "question": "Stormcloaks or Imperials?",
+  "publishedAt": null,
+  "validUntil": "2025-12-31T00:00:00Z",
+  "voteOptions": [
+    { "caption": "Stormcloaks!", "presentationOrder": 1 },
+    { "caption": "Imperials!", "presentationOrder": 2 }
+  ]
+}
+
+### 6) List polls
+GET http://localhost:8080/polls
+
+### 7) User 2 votes on the poll
+POST http://localhost:8080/polls/3/votes
+Content-Type: application/json
+
+{
+  "voterId": 2,
+  "voteOptionId": 5
+}
+
+### 8) User 2 changes his vote
+PUT http://localhost:8080/votes/6
+Content-Type: application/json
+
+{
+  "voteOptionId": 4
+}
+
+### 9) List votes
+GET http://localhost:8080/votes
+
+### 10) Delete the poll
+DELETE http://localhost:8080/polls/3
+
+### 11) List votes
+GET http://localhost:8080/votes
+
